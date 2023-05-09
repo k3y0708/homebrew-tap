@@ -9,11 +9,7 @@ class Otter < Formula
   depends_on "go" => :build
 
   def install
-    ENV["GOPATH"] = buildpath
-    path = buildpath/"src/github.com/k3y0708/otter"
-    path.install Dir["*"]
-    cd path do
-      system "go", "build", "-o", "#{bin}/otter"
-    end
+    # ENV.deparallelize  # if your formula fails when building in parallel
+    system "go", "build", *std_go_args(ldflags: "-s -w")
   end
 end
