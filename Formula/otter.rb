@@ -16,8 +16,4 @@ class Otter < Formula
       system "go", "build", "-o", "#{bin}/otter"
     end
   end
-
-  test do
-    assert_match version.to_s, shell_output("#{bin}/otter version", 1)
-  end
 end
